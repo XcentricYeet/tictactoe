@@ -83,8 +83,30 @@ void localGame() {
 }
 
 int AI(char board[], char ID, char playerID) {
-	if((board[0]==' ' && (board[1]==ID||board[1]==playerID) && (board[2]==ID || board[2]==playerID)) || (board[0]==' ' && (board[4]==ID || board[4]==playerID) && (board[8]==ID || board[8]==playerID)) || (board[0]==' ' && (board[3]==ID || board[3]==playerID) && (board[6]==ID || board[6]==playerID))) {
+	if((board[0]==' ' && board[1]==ID && board[2]==ID) || (board[0]==' ' && board[1]==playerID && board[2]==playerID) || (board[0]==' ' && board[4]==ID && board[8]==ID) || (board[0]==' ' && board[4]==playerID && board[8]==playerID) || (board[0]==' ' && board[3]==ID && board[6]==ID) || (board[0]==' ' && board[3]==playerID && board[6]==playerID)) {
 		return 1;
+	} else if ((board[0]==ID && board[1]==' ' && board[2]==ID) || (board[0]==playerID && board[1]==' ' && board[2]==playerID) || (board[1]==' ' && board[4]==ID && board[7]==ID) || (board[1]==' ' && board[4]==playerID && board[7]==playerID)) {
+		return 2;
+	} else if(((board[2]==' ' && board[1]==ID && board[0]==ID) || (board[2]==' ' && board[1]==playerID && board[0]==playerID) || (board[2]==' ' && board[4]==ID && board[6]==ID) || (board[0]==' ' && board[4]==playerID && board[6]==playerID) || (board[2]==' ' && board[5]==ID && board[8]==ID) || (board[2]==' ' && board[5]==playerID && board[8]==playerID))) {
+		return 3;
+	} else if((board[3]==' ' && board[4]==ID && board[5]==ID) || (board[3]==' ' && board[4]==playerID && board[5]==playerID) || (board[0]==ID && board[3]==' ' && board[6]==ID) || (board[0]==playerID && board[3]==' ' && board[6]==playerID)) {
+		return 4;
+	} else if(board[4]==' ') {
+		return 5;
+	} else if((board[5]==' ' && board[4]==ID && board[3]==ID) || (board[5]==' ' && board[4]==playerID && board[3]==playerID) || (board[5]==' ' && board[2]==ID && board[8]==ID) || (board[5]==' ' && board[2]==playerID && board[8]==playerID)) {
+		return 6;
+	} else if((board[6]==' ' && board[7]==ID && board[8]==ID) || (board[6]==' ' && board[7]==playerID && board[8]==playerID) || (board[6]==' ' && board[4]==ID && board[2]==ID) || (board[6]==' ' && board[4]==playerID && board[2]==playerID) || (board[6]==' ' && board[3]==ID && board[2]==ID) || (board[6]==' ' && board[3]==playerID && board[2]==playerID)) {
+		return 7;
+	} else if((board[7]==' ' && board[6]==ID && board[8]==ID) || (board[7]==' ' && board[6]==playerID && board[8]==playerID) || (board[7]==' ' && board[4]==ID && board[1]==ID) || (board[7]==' ' && board[4]==playerID && board[1]==playerID)) {
+		return 8;
+	} else if((board[8]==' ' && board[7]==ID && board[6]==ID) || (board[8]==' ' && board[7]==playerID && board[6]==playerID) || (board[8]==' ' && board[5]==ID && board[2]==ID) || (board[8]==' ' && board[5]==playerID && board[2]==playerID) || (board[8]==' ' && board[4]==ID && board[0]==ID) || (board[8]==' ' && board[4]==playerID && board[0]==playerID)) {
+		return 9;
+	} else {
+		for(int i=0; i<9; i++) {
+			if(board[i]==' ') {
+				return i+1;
+			}
+		}
 	}
 }
 
